@@ -677,7 +677,7 @@ function start_addons {
 
 function download_agro {
     mkdir -p "/etc/kubernetes/volumeplugins/coreos.com~agro"
-    wget -O "/etc/kubernetes/volumeplugins/coreos.com~agro/agro" "https://barakmich.s3-us-west-2.amazonaws.com/agromount?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160427%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160427T184202Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=0ff0ea052e917a4deea3d18cab11a793634505e0d6c7512bd468e07c5c101af8"
+    wget -O "/etc/kubernetes/volumeplugins/coreos.com~agro/agro" "https://barakmich.s3-us-west-2.amazonaws.com/agromount?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160505T234600Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2c103cec940ff841702c6430fe475b9e484f5418ffe10ab53045cf0e50639288"
     chmod +x "/etc/kubernetes/volumeplugins/coreos.com~agro/agro"
     modprobe nbd
 }

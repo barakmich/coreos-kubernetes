@@ -175,7 +175,7 @@ EOF
 
 function download_agro {
     mkdir -p "/etc/kubernetes/volumeplugins/coreos.com~agro"
-    wget -O "/etc/kubernetes/volumeplugins/coreos.com~agro/agro" "https://barakmich.s3-us-west-2.amazonaws.com/agromount?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160505%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160505T234600Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2c103cec940ff841702c6430fe475b9e484f5418ffe10ab53045cf0e50639288"
+    wget -O "/etc/kubernetes/volumeplugins/coreos.com~agro/agro" "https://barakmich.s3-us-west-2.amazonaws.com/agromount?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160512T185415Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=274767ca1f17f09f71b8e6d7bea9d16ed3aafe861a8eeb9294299814448aafee"
     chmod +x "/etc/kubernetes/volumeplugins/coreos.com~agro/agro"
     modprobe nbd
 }

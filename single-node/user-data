@@ -665,16 +665,16 @@ function start_addons {
     curl --silent -H "Content-Type: application/json" -XPOST -d"$(cat /srv/kubernetes/manifests/heapster-svc.json)" "http://127.0.0.1:8080/api/v1/namespaces/kube-system/services" > /dev/null
 }
 
-function download_agro {
-    mkdir -p "/etc/kubernetes/volumeplugins/coreos.com~agro"
-    wget -O "/etc/kubernetes/volumeplugins/coreos.com~agro/agro" "https://barakmich.s3-us-west-2.amazonaws.com/agroblock?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160525%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160525T231050Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=4ecbab6e429689172eb3e98170e990d3871fd95c27f4878a8a5577eecb6beceb"
-    chmod +x "/etc/kubernetes/volumeplugins/coreos.com~agro/agro"
+function download_torus {
+    mkdir -p "/etc/kubernetes/volumeplugins/coreos.com~torus"
+    wget -O "/etc/kubernetes/volumeplugins/coreos.com~torus/torus" "https://barakmich.s3-us-west-2.amazonaws.com/torusblk?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160527T184652Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=571e502b5e3ad79b621b2c07f596d000f16256c77194743b10237f8e6d9d5fb4"
+    chmod +x "/etc/kubernetes/volumeplugins/coreos.com~torus/torus"
     modprobe nbd
 }
 
 init_config
 init_templates
-download_agro
+download_torus
 systemctl enable etcd2; systemctl start etcd2
 
 init_flannel

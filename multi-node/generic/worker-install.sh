@@ -12,6 +12,9 @@ export CONTROLLER_ENDPOINT=
 # Specify the version (vX.Y.Z) of Kubernetes assets to deploy
 export K8S_VER=v1.2.3_coreos.0
 
+# Specify the version (vX.Y.Z) of Torus to download and deploy
+export TORUS_VER=v0.1.1
+
 # The IP address of the cluster DNS service.
 # This must be the same DNS_SERVICE_IP used when configuring the controller nodes.
 export DNS_SERVICE_IP=10.3.0.10
@@ -175,7 +178,8 @@ EOF
 
 function download_torus {
     mkdir -p "/etc/kubernetes/volumeplugins/coreos.com~torus"
-    wget -O "/etc/kubernetes/volumeplugins/coreos.com~torus/torus" "https://barakmich.s3-us-west-2.amazonaws.com/torusblk?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJGLIVY252SEZY37Q%2F20160527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20160527T184652Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=571e502b5e3ad79b621b2c07f596d000f16256c77194743b10237f8e6d9d5fb4"
+    wget -O "/tmp/torus.tar.gz" "https://github.com/coreos/torus/releases/download/${TORUS_VER}/torus_${TORUS_VER}_linux_amd64.tar.gz"
+    tar -z -x "torus_${TORUS_VER}_linux_amd64/torusblk" -f "/tmp/torus.tar.gz" -O > "/etc/kubernetes/volumeplugins/coreos.com~torus/torus"
     chmod +x "/etc/kubernetes/volumeplugins/coreos.com~torus/torus"
     modprobe nbd
 }
